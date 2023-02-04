@@ -26,6 +26,8 @@ export default function Catalog(){
                 <FilmCase data={data} />
                 <FilmCase data={data} />
             </FrontCover>
+
+            <img className="background" src="https://www.pixelstalk.net/wp-content/uploads/images6/Star-Wars-Space-Background-Free-Download.jpg" alt="Nave no espaço" />
         </CatalogContainer>
     )
 }
@@ -53,8 +55,24 @@ const CatalogContainer = styled.div`
         color: #fff;
         text-align: center;
         font-family: "Poppins";
+        font-weight: 400;
+        text-shadow: 0px 0px 20px rgba(0,0,0,0.6);
         font-size: 1rem;
         text-align: center;
+    }
+
+    .background{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-color: red;
+        z-index: -1;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        filter: brightness(0.7);
+        -webkit-mask-image: linear-gradient(to top, transparent 25%, #161831 100%);
     }
 
 `

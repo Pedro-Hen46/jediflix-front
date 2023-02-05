@@ -13,18 +13,18 @@ export default function Catalog() {
   const SERVER_URL = process.env.REACT_APP_SERVER;
 
   const [filmsData, setFilmsData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
     const promise = axios.get(`${SERVER_URL}/films`);
 
     promise.then((response) => {
-        setLoading(true);
+        setLoading(false);
         setFilmsData(response.data);
     });
     promise.finally(() => {
-      setLoading(true);
+      setLoading(false);
     });
   }, []);
 

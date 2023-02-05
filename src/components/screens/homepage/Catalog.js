@@ -36,15 +36,11 @@ export default function Catalog() {
         PODE SELECIONAR UM FILME PARA GARANTIR A SUA POLTRONA.
       </span>
       
-      {loading === false ? (
-        <></>
-      ) : (
-        <LoadingAnimation />
-      )}
+      { loading ? <LoadingAnimation /> : <></>}
 
       <FrontCovers>
         {filmsData.length === 1 ? (
-          <></>
+          <span>Infelizmente não foi encontrado nenhum filme, volte mais tarde.</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
         ) : (
           filmsData.map((film) => <FrontCover film={film} />)
         )}

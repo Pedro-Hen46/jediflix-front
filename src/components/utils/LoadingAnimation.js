@@ -13,7 +13,7 @@ export default function LoadingAnimation() {
           play
           style={{ width: 400, height: 400 }}
         />
-        <h3>mestre Yoda buscando as informações...</h3>
+        <h3>Aguarde mestre Yoda buscando as informações...</h3>
     </LoadingProcess>
   );
 }
@@ -22,10 +22,11 @@ const LoadingProcess = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
   height: 100vh;
   z-index: 1 !important;
+  backdrop-filter: blur(1px);
 
   display: flex;
   justify-content: center;

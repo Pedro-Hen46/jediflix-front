@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import styled from "styled-components";
+
+import ModalCancelOrder from "../../utils/ModalCancelOrder";
 
 export default function OptionsLeft({ infoFilm }) {
   const navigate = useNavigate();
 
-  function cancelOrder() {
-    if(window.confirm('Estamos quase finalizando, realmente deseja cancelar o seu pedido?')) navigate("/");
-    else return;
-  }
+  const [control, setControl] = useState(false);
 
   return (
     <OptionsLeftContainer>
+      {control ? <ModalCancelOrder setControl={setControl} /> : <></>}
       <img
         src={infoFilm.frontCover}
         title={infoFilm.name}
@@ -20,8 +20,8 @@ export default function OptionsLeft({ infoFilm }) {
       <h3>
         Valor por Ingresso: <strong> R${infoFilm.price},00</strong>
       </h3>
-
-      <button onClick={() => cancelOrder()}>CANCELAR</button>
+      
+      <button onClick={() => setControl(true)}>CANCELAR</button>
     </OptionsLeftContainer>
   );
 }

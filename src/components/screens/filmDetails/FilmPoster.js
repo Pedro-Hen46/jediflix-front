@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function FilmPoster({infoFilm}) {
+export default function FilmPoster({ infoFilm }) {
   return (
     <FilmPosterContainer>
       <img
@@ -22,8 +22,11 @@ export default function FilmPoster({infoFilm}) {
           Duração do Filme: <strong>{infoFilm.duration}h</strong>
         </h3>
         <h3>
-          Classificação: <strong>
-            { infoFilm.ageClassification === 0 ? "Livre para todos os públicos" : `${infoFilm.ageClassification} anos` } 
+          Classificação:{" "}
+          <strong>
+            {infoFilm.ageClassification === 0
+              ? "Livre para todos os públicos"
+              : `${infoFilm.ageClassification} anos`}
           </strong>
         </h3>
       </div>
@@ -59,11 +62,11 @@ const FilmPosterContainer = styled.div`
     object-position: 50% 10%;
 
     filter: brightness(0.7);
-    -webkit-mask-image: linear-gradient(to top, transparent 1%, black 100%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 100%);
   }
 
   h1 {
-    z-index: 1;
+    z-index: 0;
     color: white;
     font-size: 3rem;
     text-transform: uppercase;
@@ -71,22 +74,23 @@ const FilmPosterContainer = styled.div`
     letter-spacing: 1.2px;
   }
   h3 {
-    z-index: 1;
+    z-index: 0;
     color: white;
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: 300;
-    
+
     margin-right: 20px;
   }
   strong {
-    z-index: 1;
+    z-index: 0;
     font-weight: 500;
   }
   div {
+    z-index: 0;
+
     width: 100%;
     display: flex;
     align-items: center;
-    
   }
 `;

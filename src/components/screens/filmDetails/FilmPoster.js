@@ -47,7 +47,7 @@ const FilmPosterContainer = styled.div`
   background-color: #161831;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 20rem;
+  padding-left: 23.5vw;
 
   img {
     position: absolute;

@@ -7,7 +7,9 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
     }   
-
+    * img{
+     user-select:none;
+    }
     body{
         background-color: #161831;
         position: relative;

@@ -10,11 +10,11 @@ export default function FilmOverview({infoFilm}) {
       <br/>
       <span>SELECIONE UM HORÁRIO PARA RESERVAR:</span>
       <div>
-        <button>14:30H</button>
-        <button>17:30H</button>
-        <button>18:20H</button>
-        <button>22:00H</button>
-        <button>23:15H</button>
+        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>14:30H</button>
+        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>17:30H</button>
+        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>18:20H</button>
+        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>22:00H</button>
+        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>23:15H</button>
       </div>
     </FilmOverviewContainer>
   );
@@ -23,7 +23,7 @@ export default function FilmOverview({infoFilm}) {
 const FilmOverviewContainer = styled.div`
   width: 100vw;
   height: 60vh;
-  margin-top: 30vh;
+  margin-top: 40vh;
   margin-left: 20vw;
   padding: 2rem;
 

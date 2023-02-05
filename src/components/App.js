@@ -11,7 +11,7 @@ export default function App() {
     <GlobalStyle />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/film/:id" element={<FilmDetails />} />
+        <Route path="/film/:filmId" element={<FilmDetails />} />
       </Routes>
     </BrowserRouter>
   );

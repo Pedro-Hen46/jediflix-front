@@ -1,19 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function FilmOverview() {
+export default function FilmOverview({infoFilm}) {
   return (
     <FilmOverviewContainer>
       <h3>
-        Em um futuro próximo... Após séculos de peregrinação ambiental, os dias
-        da Terra estão contados. Com ela, a espécie humana está ameaçada de
-        extinção. Mas a esperança renasce quando um jovem cientista revela um
-        processo revolucionário de terraformação, que abre caminho para a
-        colonização de novos planetas. Um grupo de elite de todos os matizes e
-        de todas as nacionalidades é formado. Sua missão: assumir o comando da
-        nau capitânia da frota internacional e partir em busca de um novo lar
-        para a humanidade. Navegando rumo ao desconhecido, esses novos
-        exploradores estão longe de imaginar os imensos perigos que os aguardam.
+        {infoFilm.overview}
       </h3>
       <br/>
       <span>SELECIONE UM HORÁRIO PARA RESERVAR:</span>

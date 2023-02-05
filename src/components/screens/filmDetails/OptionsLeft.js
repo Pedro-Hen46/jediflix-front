@@ -1,19 +1,27 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-export default function OptionsLeft() {
+export default function OptionsLeft({ infoFilm }) {
+  const navigate = useNavigate();
+
+  function cancelOrder() {
+    if(window.confirm('Estamos quase finalizando, realmente deseja cancelar o seu pedido?')) navigate("/");
+    else return;
+  }
+
   return (
     <OptionsLeftContainer>
       <img
-        src="https://br.web.img2.acsta.net/c_310_420/pictures/23/01/04/17/26/0928174.jpg"
-        title="Gemini"
-        alt="gemini"
+        src={infoFilm.frontCover}
+        title={infoFilm.name}
+        alt={infoFilm.name}
       />
       <h3>
-        Valor por Ingresso: <strong>R$ 25,00 </strong>
+        Valor por Ingresso: <strong> R${infoFilm.price},00</strong>
       </h3>
-      
-      <button>CANCELAR</button>
+
+      <button onClick={() => cancelOrder()}>CANCELAR</button>
     </OptionsLeftContainer>
   );
 }
@@ -51,6 +59,9 @@ const OptionsLeftContainer = styled.div`
 
     margin-right: 20px;
   }
+  strong {
+    font-size: 2rem;
+  }
 
   button {
     position: fixed;
@@ -63,8 +74,8 @@ const OptionsLeftContainer = styled.div`
     color: #f82b4b;
 
     transition: 0.3s linear;
-    &:hover{
-      background-color: rgba(255,0,0, 0.4);
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.4);
       color: white;
       font-weight: 600;
       cursor: pointer;

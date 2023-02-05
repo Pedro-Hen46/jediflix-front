@@ -1,61 +1,78 @@
 import React from "react";
 import styled from "styled-components";
+import Lottie from "react-lottie-player";
+import babyYoda from "../../../lib/svg/lovebaby.json";
 
 import bgImage from "../../../lib/images/background.jpg";
-import ticketImage from "../../../lib/images/ticket.png";
+import Ticket from "../../utils/Ticket";
 export default function MyOrders() {
   return (
     <MyOrdersContainer>
       <BabyYoda>
-        <h1>oi</h1>
+        <h3>
+          PARABENS JEDI, AGORA BASTA AGUARDAR O FUNCIONAMENTO DA NAVE E
+          COMPARECER NO LOCAL E NA DATA DO SEU TICKET!
+        </h3>
+        
+        <Lottie
+          loop
+          animationData={babyYoda}
+          play
+          style={{ width: 300, height: 300 }}
+        />
+        <br />
+        <br />
+        <br />
+        <br />
+        <tt>TODOS DOS DIREITOS RESERVADOS - PROTEÇÃO DE REDE <strong>STARLINK</strong></tt>
       </BabyYoda>
-      <MyTicketsOrders>
-        <Ticket>
-          {/* <img src={ticketImage} title="Ticket" alt="Ticket" /> */}
-          <h3>Gemini o planeta sombrio</h3>
-        </Ticket>
-      </MyTicketsOrders>
+      <TicketsContainer>
+        <Ticket />
+        <Ticket />
+        <Ticket />
+        <Ticket />
+      </TicketsContainer>
       <img className="background" src={bgImage} alt="Nave no espaço" />
     </MyOrdersContainer>
   );
 }
-const Ticket = styled.div`
-  width: 40vw;
-  height: 30vh;
+const TicketsContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-image: url("./ticket.png");
-
-  img{
-    width: 100%;
-    z-index: 0;
-    position: relative;
-
-  }
-  h3{
-    position: absolute;
-    top: 0;
-  }
-`;
-const BabyYoda = styled.div`
-  width: 40vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const MyTicketsOrders = styled.div`
+  flex-direction: column;
   width: 60vw;
   height: 100vh;
+  margin-top: 4rem;
+`;
+const BabyYoda = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 40vw;
+  padding: 4rem;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  h3 {
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  tt{
+    color: #fff;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 300;
+
+  }
 `;
 const MyOrdersContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 
   display: flex;
   justify-content: center;

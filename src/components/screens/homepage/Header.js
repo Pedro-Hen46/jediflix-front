@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../../lib/images/logo-light.png";
+import Logo from "../../../lib/images/logo-light.png";
 import { BsSearch, BsFillGearFill } from "react-icons/bs";
 
 export default function Header(){

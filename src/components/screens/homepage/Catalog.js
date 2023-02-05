@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import axios from "axios";
 import dotenv from "dotenv";
 import Lottie from "react-lottie";
-import animationData from "../../lib/svg/baby.json";
 
-import styled from "styled-components";
+import animationData from "../../../lib/svg/baby.json";
+import bgImage from "../../../lib/images/background.jpg";
 import FilmCase from "./FilmCase";
-import bgImage from "../../lib/images/background.jpg";
 
 export default function Catalog() {
   dotenv.config();

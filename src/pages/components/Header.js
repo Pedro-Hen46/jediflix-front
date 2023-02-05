@@ -25,5 +25,6 @@ const HeaderContainer = styled.div`
 
     img{
         height: 6rem;
+        filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.9));
     }
 `

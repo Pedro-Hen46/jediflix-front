@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function FilmCase({data}){
-
+export default function FilmCase({film}){
+   
     return(
         <FilmCaseImg>
-            <img src={data[0].image} alt={data[0].name} title={data[0].name}/>            
+            <img src={film.frontCover} alt={film.name} title={film.name}/>            
         </FilmCaseImg>
     )
 }

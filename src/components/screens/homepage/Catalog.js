@@ -2,37 +2,29 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import dotenv from "dotenv";
-import Lottie from "react-lottie";
 
-import animationData from "../../../lib/svg/baby.json";
+
 import bgImage from "../../../lib/images/background.jpg";
-import FilmCase from "./FilmCase";
+import FrontCover from "./FrontCover";
+import LoadingAnimation from "../../utils/LoadingAnimation";
 
 export default function Catalog() {
   dotenv.config();
   const SERVER_URL = process.env.REACT_APP_SERVER;
 
   const [filmsData, setFilmsData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
   useEffect(() => {
     setLoading(true);
     const promise = axios.get(`${SERVER_URL}/films`);
 
     promise.then((response) => {
-        setLoading(false);
+        setLoading(true);
         setFilmsData(response.data);
     });
     promise.finally(() => {
-      setLoading(false);
+      setLoading(true);
     });
   }, []);
 
@@ -47,17 +39,14 @@ export default function Catalog() {
       {loading === false ? (
         <></>
       ) : (
-        <LoadingProcess>
-          <Lottie options={defaultOptions} height={400} width={400} />
-          <h3>AGUARDE ESTOU BUSCANDO OS DADOS...</h3>
-        </LoadingProcess>
+        <LoadingAnimation />
       )}
 
       <FrontCovers>
         {filmsData.length === 1 ? (
           <></>
         ) : (
-          filmsData.map((film) => <FilmCase film={film} />)
+          filmsData.map((film) => <FrontCover film={film} />)
         )}
       </FrontCovers>
 
@@ -65,26 +54,7 @@ export default function Catalog() {
     </CatalogContainer>
   );
 }
-const LoadingProcess = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 100vw;
-  height: 100vh;
-  z-index: 1 !important;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  h3 {
-    margin-top: -3.5rem;
-    color: #fff;
-    text-align: center;
-  }
-`;
 
 const FrontCovers = styled.div`
   width: 100%;

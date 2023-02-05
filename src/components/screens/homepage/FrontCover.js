@@ -2,18 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default function FilmCase({film}){
+export default function FrontCover({film}){
    
     return(
-        <FilmCaseImg>
+        <FrontCoverImg>
             <Link to={`/film/${film.id}`}>
                 <img src={film.frontCover} alt={film.name} title={film.name}/>            
             </Link>
-        </FilmCaseImg>
+        </FrontCoverImg>
     )
 }
 
-const FilmCaseImg = styled.div`    
+const FrontCoverImg = styled.div`    
     img{
         object-fit: contain;
         width: 10rem;

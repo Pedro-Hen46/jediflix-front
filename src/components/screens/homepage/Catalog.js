@@ -91,7 +91,7 @@ const CatalogContainer = styled.div`
     top: 0;
     left: 0;
 
-    filter: brightness(0.7);
+    filter: brightness(0.5);
     -webkit-mask-image: linear-gradient(to top, transparent 25%, #161831 100%);
   }
 `;

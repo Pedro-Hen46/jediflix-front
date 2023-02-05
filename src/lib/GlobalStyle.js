@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
+        text-decoration: none;
     }   
     * img{
      user-select:none;

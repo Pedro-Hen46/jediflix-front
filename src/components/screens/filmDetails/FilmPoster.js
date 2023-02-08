@@ -54,7 +54,6 @@ const FilmPosterContainer = styled.div`
     top: 0;
     left: 0;
     z-index: 0;
-    background-image: url(${(props) => props.imageUrl});
     width: 100%;
     height: 100%;
     object-fit: cover;

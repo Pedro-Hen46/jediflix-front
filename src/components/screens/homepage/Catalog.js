@@ -42,7 +42,7 @@ export default function Catalog() {
         {filmsData.length === 1 ? (
           <span>Infelizmente não foi encontrado nenhum filme, volte mais tarde.</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
         ) : (
-          filmsData.map((film) => <FrontCover film={film} />)
+          filmsData.map((film, index) => <FrontCover film={film} key={index} />)
         )}
       </FrontCovers>
 

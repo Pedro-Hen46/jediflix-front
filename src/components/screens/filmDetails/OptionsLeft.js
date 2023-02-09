@@ -18,7 +18,7 @@ export default function OptionsLeft({ infoFilm }) {
         alt={infoFilm.name}
       />
       <h3>
-        Valor por Ingresso: <strong> R${infoFilm.price},00</strong>
+        Valor por Ingresso: <strong> R${infoFilm.priceTicket},00</strong>
       </h3>
       
       <button onClick={() => setControl(true)}>CANCELAR</button>

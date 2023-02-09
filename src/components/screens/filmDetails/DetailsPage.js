@@ -25,6 +25,8 @@ export default function DetailsPage() {
     });
   }, []);
 
+  console.log(infoFilm)
+
   return (
     <DetailsPageContainer loading={loading}>
       {loading ? <LoadingAnimation /> : (

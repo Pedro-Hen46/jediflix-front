@@ -7,6 +7,17 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
         text-decoration: none;
+
+            ::-webkit-scrollbar-track {
+            background-color: #F4F4F4;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+            background: #f82b4b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f82b4b;
+        }
     }   
     * img{
      user-select:none;
@@ -14,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
     body{
         background-color: #161831;
         position: relative;
-    }`;
+
+    
+}`;
 
 export default GlobalStyle;

@@ -42,7 +42,7 @@ export default function Catalog() {
       )}
 
       <FrontCovers>
-        {filmsData.length === 0 ? (
+        {filmsData.length === 0 && loading === false ? (
          <NotExistsContent />
         ) : (
           filmsData.map((film, index) => <FrontCover film={film} key={index} />)

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 export default function FilmOverview({ infoFilm }) {
-  console.log(infoFilm)
   return (
     <>
       {infoFilm.film === undefined ? (

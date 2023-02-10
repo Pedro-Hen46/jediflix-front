@@ -3,10 +3,10 @@ import styled from "styled-components";
 import axios from "axios";
 import dotenv from "dotenv";
 
-
 import bgImage from "../../../lib/images/background.jpg";
 import FrontCover from "./FrontCover";
 import LoadingAnimation from "../../utils/LoadingAnimation";
+import NotExistsContent from "../../utils/NotExistsContent";
 
 export default function Catalog() {
   dotenv.config();
@@ -20,8 +20,8 @@ export default function Catalog() {
     const promise = axios.get(`${SERVER_URL}/films`);
 
     promise.then((response) => {
-        setLoading(false);
-        setFilmsData(response.data);
+      setLoading(false);
+      setFilmsData(response.data);
     });
     promise.finally(() => {
       setLoading(false);
@@ -30,17 +30,20 @@ export default function Catalog() {
 
   return (
     <CatalogContainer>
-      <span>
-        OLÁ JEDI, TUDO BEM? INFELIZMENTE A NAVE ESTÁ PASSANDO POR ALGUNS
-        PROBLEMAS, ENTÃO SUA VIAGEM IRÁ ATRASAR UM POUCO, ENQUANDO ISSO VOCÊ
-        PODE SELECIONAR UM FILME PARA GARANTIR A SUA POLTRONA.
-      </span>
-      
-      { loading ? <LoadingAnimation /> : <></>}
+      {loading ? <LoadingAnimation /> : <></>}
+      {filmsData.length === 0 ? (
+        <></>
+      ) : (
+        <span>
+          OLÁ JEDI, TUDO BEM? INFELIZMENTE A NAVE ESTÁ PASSANDO POR ALGUNS
+          PROBLEMAS, ENTÃO SUA VIAGEM IRÁ ATRASAR UM POUCO, ENQUANDO ISSO VOCÊ
+          PODE SELECIONAR UM FILME PARA GARANTIR A SUA POLTRONA.
+        </span>
+      )}
 
       <FrontCovers>
-        {filmsData.length === 1 ? (
-          <span>Infelizmente não foi encontrado nenhum filme, volte mais tarde.</span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+        {filmsData.length === 0 ? (
+         <NotExistsContent />
         ) : (
           filmsData.map((film, index) => <FrontCover film={film} key={index} />)
         )}
@@ -50,7 +53,6 @@ export default function Catalog() {
     </CatalogContainer>
   );
 }
-
 
 const FrontCovers = styled.div`
   width: 100%;
@@ -80,7 +82,7 @@ const CatalogContainer = styled.div`
     font-size: 1rem;
     text-align: center;
   }
-
+  
   .background {
     width: 100%;
     height: 100%;

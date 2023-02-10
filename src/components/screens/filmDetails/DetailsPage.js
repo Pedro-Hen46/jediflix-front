@@ -15,6 +15,8 @@ export default function DetailsPage() {
   const [infoFilm, setInfoFilm] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
+
   useEffect(() => {
     const promise = axios.get(`${SERVER_URL}/film/${filmId}`);
     setLoading(true);
@@ -25,16 +27,16 @@ export default function DetailsPage() {
     });
   }, []);
 
-  console.log(infoFilm)
-
   return (
     <DetailsPageContainer loading={loading}>
-      {loading ? <LoadingAnimation /> : (
-      <>
-        <FilmPoster infoFilm={infoFilm} />
-        <OptionsLeft infoFilm={infoFilm} />
-        <FilmOverview infoFilm={infoFilm} />
-      </>
+      {loading && infoFilm !== [] ? (
+        <LoadingAnimation />
+      ) : (
+        <>
+          <FilmPoster infoFilm={infoFilm} />
+          <OptionsLeft infoFilm={infoFilm} />
+          <FilmOverview infoFilm={infoFilm} />
+        </>
       )}
     </DetailsPageContainer>
   );

@@ -9,20 +9,20 @@ export default function LoadingAnimation() {
   const [controlLoading, setControlLoading] = useState(false);
   const arrLoading = [
     {
+      name: "bb8",
+      message: [
+        "bb8 está correndo rapido demais para encontrar os dados...",
+        "bb8 está girando o mais rápido que pode...",
+        "Aguarde um segundo, os Jedi's estão demorando um pouco para responder...",
+      ],
+    },
+    {
       name: "babyYoda",
       message: [
         "Baby yoda está canalizando a sua força...",
         "Aguarde, eu ainda sou baby yoda, estou aprendendo a força !",
         "Buaaaaaahhhh! Estou buscando mais rápido que posso.",
         "Estou calculando a força para vc, aguarde por favor."
-      ],
-    },
-    {
-      name: "bb8",
-      message: [
-        "bb8 está correndo rapido demais para encontrar os dados...",
-        "bb8 está girando o mais rápido que pode...",
-        "Aguarde um segundo, os Jedi's estão demorando um pouco para responder...",
       ],
     },
   ];

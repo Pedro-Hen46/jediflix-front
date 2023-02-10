@@ -1,22 +1,59 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function FilmOverview({infoFilm}) {
+export default function FilmOverview({ infoFilm }) {
+  console.log(infoFilm)
   return (
-    <FilmOverviewContainer>
-      <h3>
-        {infoFilm.overview}
-      </h3>
-      <br/>
-      <span>SELECIONE UM HORÁRIO PARA RESERVAR:</span>
-      <div>
-        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>14:30H</button>
-        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>17:30H</button>
-        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>18:20H</button>
-        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>22:00H</button>
-        <button onClick={() => window.alert("Calma Jedi, feature em desenvolvimento")}>23:15H</button>
-      </div>
-    </FilmOverviewContainer>
+    <>
+      {infoFilm.film === undefined ? (
+        <h1>Ainda não tenho nada para mostrar, tente novamente mais tarde.</h1>
+      ) : (
+        <FilmOverviewContainer>
+          <span>SELECIONE UM HORÁRIO PARA RESERVAR:</span>
+          <div>
+            <button
+              onClick={() =>
+                window.alert("Calma Jedi, feature em desenvolvimento")
+              }
+            >
+              14:30H
+            </button>
+            <button
+              onClick={() =>
+                window.alert("Calma Jedi, feature em desenvolvimento")
+              }
+            >
+              17:30H
+            </button>
+            <button
+              onClick={() =>
+                window.alert("Calma Jedi, feature em desenvolvimento")
+              }
+            >
+              18:20H
+            </button>
+            <button
+              onClick={() =>
+                window.alert("Calma Jedi, feature em desenvolvimento")
+              }
+            >
+              22:00H
+            </button>
+            <button
+              onClick={() =>
+                window.alert("Calma Jedi, feature em desenvolvimento")
+              }
+            >
+              23:15H
+            </button>
+          </div>
+          <br />
+          <h3><strong>Resumo do filme:</strong></h3>
+          <h3>{infoFilm.film.overview}</h3>
+         
+        </FilmOverviewContainer>
+      )}
+    </>
   );
 }
 
@@ -40,14 +77,13 @@ const FilmOverviewContainer = styled.div`
     font-size: 1.2rem;
     font-weight: 400;
   }
-  span{
+  span {
     text-align: center;
     color: #f82b4b;
     text-transform: uppercase;
     font-size: 1.2rem;
     letter-spacing: 1.2px;
     font-weight: 800;
-
   }
   button {
     width: 120px;
@@ -70,7 +106,6 @@ const FilmOverviewContainer = styled.div`
     }
   }
   div {
-    
     width: 70%;
     display: flex;
     justify-content: space-around;

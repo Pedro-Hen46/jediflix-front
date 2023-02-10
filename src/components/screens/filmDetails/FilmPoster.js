@@ -2,35 +2,42 @@ import React from "react";
 import styled from "styled-components";
 
 export default function FilmPoster({ infoFilm }) {
+  
   return (
-    <FilmPosterContainer>
-      <img
-        src={infoFilm.headerImage}
-        title={infoFilm.name}
-        alt={infoFilm.name}
-      />
-      <h1>{infoFilm.name}</h1>
-      <br />
-      <h3>
-        Categoria: <strong>{infoFilm.category}</strong>
-      </h3>
-      <div>
-        <h3>
-          Data de Lançamento: <strong>{infoFilm.productedAt}</strong>
-        </h3>
-        <h3>
-          Duração do Filme: <strong>{infoFilm.duration}h</strong>
-        </h3>
-        <h3>
-          Classificação:{" "}
-          <strong>
-            {infoFilm.ageClassification === 0
-              ? "Livre para todos os públicos"
-              : `${infoFilm.ageClassification} anos`}
-          </strong>
-        </h3>
-      </div>
-    </FilmPosterContainer>
+    <>
+      {infoFilm.film === undefined ? (
+        <h1>Não tenho nada para mostrar no momento.</h1>
+      ) : (
+        <FilmPosterContainer>
+          <img
+            src={infoFilm.film.headerImage}
+            title={infoFilm.film.name}
+            alt={infoFilm.film.name}
+          />
+          <h1>{infoFilm.film.name}</h1>
+          <br />
+          <h3>
+            Categoria: <strong>{infoFilm.film.category}</strong>
+          </h3>
+          <div>
+            <h3>
+              Data de Lançamento: <strong>{infoFilm.film.productedAt}</strong>
+            </h3>
+            <h3>
+              Duração do Filme: <strong>{infoFilm.film.duration}h</strong>
+            </h3>
+            <h3>
+              Classificação:{" "}
+              <strong>
+                {infoFilm.film.ageClassification == 0
+                  ? "Livre para todos os públicos"
+                  : `${infoFilm.film.ageClassification} anos`}
+              </strong>
+            </h3>
+          </div>
+        </FilmPosterContainer>
+      )}
+    </>
   );
 }
 

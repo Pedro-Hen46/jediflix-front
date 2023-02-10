@@ -10,12 +10,15 @@ export default function Footer(){
 }
 
 const FooterContainer = styled.div`
-    margin-bottom: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    background-color: #FFF;
     tt{
         color: #F82B4B;
         font-size: 0.7rem;

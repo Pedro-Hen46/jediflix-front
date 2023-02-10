@@ -10,19 +10,25 @@ export default function OptionsLeft({ infoFilm }) {
   const [control, setControl] = useState(false);
 
   return (
-    <OptionsLeftContainer>
-      {control ? <ModalCancelOrder setControl={setControl} /> : <></>}
-      <img
-        src={infoFilm.frontCover}
-        title={infoFilm.name}
-        alt={infoFilm.name}
-      />
-      <h3>
-        Valor por Ingresso: <strong> R${infoFilm.priceTicket},00</strong>
-      </h3>
-      
-      <button onClick={() => setControl(true)}>CANCELAR</button>
-    </OptionsLeftContainer>
+    <>
+      {infoFilm.film === undefined ? (
+        <h1>Ainda não tenho nada para mostrar, tente novamente mais tarde</h1>
+      ) : (
+        <OptionsLeftContainer>
+          {control ? <ModalCancelOrder setControl={setControl} /> : <></>}
+          <img
+            src={infoFilm.film.frontCover}
+            title={infoFilm.film.name}
+            alt={infoFilm.film.name}
+          />
+          <h3>
+            Valor por Ingresso: <strong> R${infoFilm.film.priceTicket},00</strong>
+          </h3>
+
+          <button onClick={() => setControl(true)}>CANCELAR</button>
+        </OptionsLeftContainer>
+      )}
+    </>
   );
 }
 

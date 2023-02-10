@@ -9,7 +9,7 @@ export default function NotExistsContent() {
     <Container>
       <Lottie
         animationData={babyYoda}
-        autoplay={true}
+        autoPlay={true}
         play
         speed={0.6}
         loop={true}

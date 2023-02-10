@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ReactPlayer from "react-player/youtube";
 
 export default function YoutubeTrailerModal({ infoFilm, setTrailerPlayer }) {
-
   return (
     <Container onClick={() => setTrailerPlayer(false)}>
       <Player>
@@ -12,12 +11,9 @@ export default function YoutubeTrailerModal({ infoFilm, setTrailerPlayer }) {
           title="Trailer do filme"
           width="100%"
           height="100%"
-          
         />
       </Player>
-      <h4>
-        Para fechar o player clique fora do video.
-      </h4>
+      <h4>Para fechar o player clique fora do video.</h4>
     </Container>
   );
 }
@@ -27,7 +23,7 @@ const Player = styled.div`
   border-radius: 8px;
 
   transition: 0.3s linear;
-  :hover{
+  :hover {
     box-shadow: 0px 0px 40px rgba(255, 0, 100, 0.5);
   }
 `;

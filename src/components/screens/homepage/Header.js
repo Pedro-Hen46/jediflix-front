@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../../../lib/images/logo-light.png";
 import { BsSearch, BsFillPersonFill } from "react-icons/bs";
+import MenuHamburguer from "../../utils/MenuHamburguer";
 
 export default function Header(){
     return (
@@ -9,7 +10,7 @@ export default function Header(){
             <BsSearch fontSize={"2rem"} color="#F82B4B"/>
             <img src={Logo} alt="Logo Jedi" title="DartVader - Eu sou seu PAIII!"/>
             <BsFillPersonFill fontSize={"2rem"} color="#FFf"/>
-
+            
         </HeaderContainer>
     )
 }

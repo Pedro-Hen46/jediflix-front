@@ -1,25 +1,109 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { InfinitySpin } from "react-loader-spinner";
 import styled from "styled-components";
+import axios from "axios";
 
 import bgImage from "../../../lib/images/background.jpg";
 import Logo from "../../../lib/images/logo-light.png";
 
 export default function Register() {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  function sendDataToApi(event) {
+    event.preventDefault();
+
+    setLoading(true);
+
+    if (password.length < 6) {
+      window.alert(
+        "Por favor, entre com uma senha maior (MINIMO DE 6 CARACTERES)"
+      );
+      setLoading(false);
+    } else {
+      if (confirmPassword !== password) {
+        window.alert("As senhas não estão iguais, tente novamente...");
+        setLoading(false);
+      }
+
+      const promise = axios.post(`${process.env.REACT_APP_SERVER}/register`, {
+        name: name,
+        email: email,
+        password: password,
+      });
+
+      promise.then((response) => {
+        setLoading(false);
+
+        if (response.status === 201) {
+          navigate("/login");
+        }
+      });
+
+      promise.catch((error) => {
+        setLoading(false);
+        console.log(error.message);
+
+        if (error.message === "Request failed with status code 409") {
+          if (
+            window.confirm("Usuário já cadastrado, deseja efetuar o login ?")
+          ) {
+            navigate("/login");
+          }
+        }
+      });
+    }
+  }
+
   return (
     <RegisterContainer>
       <img src={Logo} alt="JediFlix" />
 
-      <form>
+      <form onSubmit={(event) => sendDataToApi(event)}>
         <label>Entre com o seu Nome:</label>
-        <input type="text" placeholder="Digite o seu nome..." />
+        <input
+          disabled={loading}
+          onChange={(e) => setName(e.target.value)}
+          required
+          type="text"
+          placeholder="Digite o seu nome..."
+        />
         <label>Entre com a sua E-mail:</label>
-        <input type="email" placeholder="Digite o seu e-mail..." />
+        <input
+          disabled={loading}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          type="email"
+          placeholder="Digite o seu e-mail..."
+        />
         <label>Entre com a sua Senha:</label>
-        <input type="password" placeholder="Digite o seu senha..." />
+        <input
+          disabled={loading}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          type="password"
+          placeholder="Digite o seu senha..."
+        />
         <label>Confirme a sua Senha:</label>
-        <input type="password" placeholder="Repita a sua senha..." />
-        <button>REGISTER</button>
+        <input
+          disabled={loading}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+          type="password"
+          placeholder="Repita a sua senha..."
+        />
+        {loading ? (
+          <LoadingSpinner>
+            <InfinitySpin width="200" color="#FFFFFF" />
+          </LoadingSpinner>
+        ) : (
+          <button>REGISTRAR</button>
+        )}
         <br />
       </form>
       <Link to="/login">
@@ -29,6 +113,14 @@ export default function Register() {
     </RegisterContainer>
   );
 }
+
+const LoadingSpinner = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const RegisterContainer = styled.div`
   width: 100vw;
@@ -69,7 +161,7 @@ const RegisterContainer = styled.div`
       height: 40px;
       border: thin solid #f82b4b;
       border-radius: 6px;
-      color: #fff;
+      color: #000;
     }
     label {
       color: #fff;

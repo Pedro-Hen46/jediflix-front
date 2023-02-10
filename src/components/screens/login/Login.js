@@ -1,32 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { InfinitySpin } from "react-loader-spinner";
 import styled from "styled-components";
+import axios from "axios";
 
 import bgImage from "../../../lib/images/background.jpg";
 import Logo from "../../../lib/images/logo-light.png";
 
 export default function Login() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  function sendDataToApi(event) {
+    event.preventDefault();
+    
+    setLoading(true);
+
+    const promise = axios.post(`${process.env.REACT_APP_SERVER}/login`, {
+      email: email,
+      password: password,
+    });
+
+    promise.then((response) => {
+      console.log(response);
+      if (response.status === 200) {
+        navigate("/");
+      }
+      
+      setLoading(false);
+    });
+
+    promise.catch((error) => {
+      console.log(error.message)
+      if (error.message === "Request failed with status code 401"){
+        window.alert("Email ou senha incorretos, por favor tente novamente.");
+      }
+      if (error.message === "Request failed with status code 404"){
+        if(window.confirm("Nenhuma conta vinculada a este email, deseja criar um conta agora ?")){
+          navigate("/register");
+        }
+      }
+      setLoading(false);
+    });
+  }
+
   return (
     <LoginContainer>
       <img src={Logo} alt="JediFlix" />
 
-      <form>
+      <form onSubmit={(e) => sendDataToApi(e)}>
         <label>Entre com o seu E-mail:</label>
-        <input type="email" placeholder="Email" />
+        <input
+          disabled={loading}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          type="email"
+          placeholder="Email"
+        />
         <label>Entre com a sua Senha:</label>
-        <input type="password" placeholder="Senha" />
-        <button onClick={() => navigate("/")}>LOGIN</button>
+        <input
+          disabled={loading}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          type="password"
+          placeholder="Senha"
+        />
+
+        {loading ? (
+          <LoadingSpinner>
+            <InfinitySpin width="200" color="#FFFFFF" />
+          </LoadingSpinner>
+        ) : (
+          <button>LOGIN</button>
+        )}
         <br />
       </form>
       <Link to="/register">
         <label>Não tem uma conta? Crie agora!</label>
       </Link>
+
       <img className="background" src={bgImage} alt="Nave no espaço" />
     </LoginContainer>
   );
 }
-
+const LoadingSpinner = styled.div`
+  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const LoginContainer = styled.div`
   width: 100vw;
   height: 100vh;
@@ -66,7 +132,7 @@ const LoginContainer = styled.div`
       height: 40px;
       border: thin solid #f82b4b;
       border-radius: 6px;
-      color: #fff;
+      color: #000000;
     }
     label {
       color: #fff;

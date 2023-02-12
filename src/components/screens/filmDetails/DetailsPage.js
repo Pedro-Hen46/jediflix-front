@@ -12,10 +12,8 @@ export default function DetailsPage() {
   const SERVER_URL = process.env.REACT_APP_SERVER;
   const { filmId } = useParams();
 
-  const [infoFilm, setInfoFilm] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-
+  const [infoFilm, setInfoFilm] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const promise = axios.get(`${SERVER_URL}/film/${filmId}`);
@@ -25,11 +23,16 @@ export default function DetailsPage() {
       setInfoFilm(response.data);
       setLoading(false);
     });
+
+    promise.catch((err) => {
+      console.log(err.message);
+      setLoading(false);
+    });
   }, []);
 
   return (
     <DetailsPageContainer loading={loading}>
-      {loading && infoFilm !== [] ? (
+      {loading ? (
         <LoadingAnimation />
       ) : (
         <>
@@ -45,11 +48,10 @@ export default function DetailsPage() {
 const DetailsPageContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 
-  position: relative;
 
   display: flex;
-  /* background:linear-gradient(to top, #161831, #F82B4B); */
   background-color: #161831;
   justify-content: center;
   align-items: center;

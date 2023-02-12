@@ -6,10 +6,11 @@ import babyYoda from "../../../lib/svg/lovebaby.json";
 import bgImage from "../../../lib/images/background.jpg";
 import Ticket from "../../utils/Ticket";
 import YouDontHaveOrder from "./YouDontHaveOrder.js";
+import { useNavigate } from "react-router-dom";
 
 export default function MyOrders() {
-
-  const control = false;
+  const navigate = useNavigate();
+  const control = true;
   
   return (
     <>
@@ -29,6 +30,7 @@ export default function MyOrders() {
             />
             <br />
             <br />
+            <button onClick={() => navigate("/")}>VOLTAR PARA NAVE</button>
             <br />
             <br />
             <tt>
@@ -79,6 +81,24 @@ const BabyYoda = styled.div`
     text-align: center;
     font-size: 0.8rem;
     font-weight: 300;
+  }
+  button{
+    width: 80%;
+    height: 3rem;
+    border-radius: 8px;
+    border: 2px solid #f82b4b;
+    background-color: #f82b4b;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+
+    transition: 0.3s linear;
+    &:hover {
+      box-shadow: 0px 0px 20px rgba(255, 0, 65, 0.5);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
   }
 `;
 const MyOrdersContainer = styled.div`

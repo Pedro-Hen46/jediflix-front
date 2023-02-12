@@ -22,7 +22,7 @@ export default function NotExistsContent() {
           novamente mais tarde.
         </tt>
         <br />
-        <a href="https://wa.me/5518997712016?text=Ol%C3%A1%20Torre%20Jedi%2C%20estou%20enfrentando%20um%20problema%20para%20obter%20os%20dados%20dos%20filmes%2C%20no%20app%20JEDIFLIX%2C%20voc%C3%AAs%20podem%20me%20ajudar%3F" target="_blank">CLIQUE AQUI COMUNICAR TORRE JEDI</a>
+        <a href="https://wa.me/5518997712016?text=Ol%C3%A1%20Torre%20Jedi%2C%20estou%20enfrentando%20um%20problema%20para%20obter%20os%20dados%20dos%20filmes%2C%20no%20app%20JEDIFLIX%2C%20voc%C3%AAs%20podem%20me%20ajudar%3F" target="_blank" rel="noopener noreferrer">CLIQUE AQUI COMUNICAR TORRE JEDI</a>
       </div>
     </Container>
   );

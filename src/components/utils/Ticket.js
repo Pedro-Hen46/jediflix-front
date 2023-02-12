@@ -45,6 +45,9 @@ const InfoFilm = styled.div`
   }
 `;
 const TicketResume = styled.div`
+  min-width: 640px;
+  min-height: 265px;
+
   width: 50vw;
   height: 40vh;
   display: flex;

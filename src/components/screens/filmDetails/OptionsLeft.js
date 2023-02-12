@@ -14,7 +14,7 @@ export default function OptionsLeft({ infoFilm }) {
   return (
     <>
       {infoFilm.film === undefined ? (
-        <h1>Ainda não tenho nada para mostrar, tente novamente mais tarde</h1>
+        <h1></h1>
       ) : (
         <OptionsLeftContainer>
           {control ? <ModalCancelOrder setControl={setControl} /> : <></>}
@@ -28,7 +28,14 @@ export default function OptionsLeft({ infoFilm }) {
             <strong> R${infoFilm.film.priceTicket},00</strong>
           </h3>
 
-          {trailerPlayer ? <YoutubeTrailerModal infoFilm={infoFilm} setTrailerPlayer={setTrailerPlayer} /> : <></>}
+          {trailerPlayer ? (
+            <YoutubeTrailerModal
+              infoFilm={infoFilm}
+              setTrailerPlayer={setTrailerPlayer}
+            />
+          ) : (
+            <></>
+          )}
           <ButtonTrailer onClick={() => setTrailerPlayer(true)}>
             TRAILER
           </ButtonTrailer>
@@ -40,7 +47,7 @@ export default function OptionsLeft({ infoFilm }) {
   );
 }
 const ButtonTrailer = styled.div`
-  background-color: red;
+  background-color: #f82b4b;
   width: 80%;
   height: 3rem;
   display: flex;

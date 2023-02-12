@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: "Poppins", "Helvetica Neue", Helvetica, Arial;
         text-decoration: none;
 
+
             ::-webkit-scrollbar-track {
             background-color: #F4F4F4;
         }
@@ -24,8 +25,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body{
         background-color: #161831;
-        position: relative;
-
+        overflow-x: hidden;
     
 }`;
 

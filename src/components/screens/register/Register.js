@@ -20,44 +20,35 @@ export default function Register() {
 
     setLoading(true);
 
-    if (password.length < 6) {
-      window.alert(
-        "Por favor, entre com uma senha maior (MINIMO DE 6 CARACTERES)"
-      );
+    if (confirmPassword !== password) {
+      window.alert("As senhas não estão iguais, tente novamente...");
       setLoading(false);
-    } else {
-      if (confirmPassword !== password) {
-        window.alert("As senhas não estão iguais, tente novamente...");
-        setLoading(false);
+    }
+
+    const promise = axios.post(`${process.env.REACT_APP_SERVER}/register`, {
+      name: name,
+      email: email,
+      password: password,
+    });
+
+    promise.then((response) => {
+      setLoading(false);
+
+      if (response.status === 201) {
+        navigate("/login");
       }
+    });
 
-      const promise = axios.post(`${process.env.REACT_APP_SERVER}/register`, {
-        name: name,
-        email: email,
-        password: password,
-      });
+    promise.catch((error) => {
+      setLoading(false);
+      console.log(error.message);
 
-      promise.then((response) => {
-        setLoading(false);
-
-        if (response.status === 201) {
+      if (error.message === "Request failed with status code 409") {
+        if (window.confirm("Usuário já cadastrado, deseja efetuar o login ?")) {
           navigate("/login");
         }
-      });
-
-      promise.catch((error) => {
-        setLoading(false);
-        console.log(error.message);
-
-        if (error.message === "Request failed with status code 409") {
-          if (
-            window.confirm("Usuário já cadastrado, deseja efetuar o login ?")
-          ) {
-            navigate("/login");
-          }
-        }
-      });
-    }
+      }
+    });
   }
 
   return (
@@ -83,6 +74,7 @@ export default function Register() {
         />
         <label>Entre com a sua Senha:</label>
         <input
+          minlength="6"
           disabled={loading}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -91,6 +83,7 @@ export default function Register() {
         />
         <label>Confirme a sua Senha:</label>
         <input
+          minlength="6"
           disabled={loading}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required

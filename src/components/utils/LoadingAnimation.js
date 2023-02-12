@@ -67,6 +67,7 @@ export default function LoadingAnimation() {
 }
 
 const LoadingProcess = styled.div`
+  overflow-y: hidden !important;
   position: fixed;
   left: 0;
   top: 0;

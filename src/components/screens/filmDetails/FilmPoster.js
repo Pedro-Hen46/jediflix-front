@@ -1,12 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 export default function FilmPoster({ infoFilm }) {
-  
   return (
     <>
       {infoFilm.film === undefined ? (
-        <h1>Não tenho nada para mostrar no momento.</h1>
+        <MagnifyingGlass
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="MagnifyingGlass-loading"
+          wrapperStyle={{}}
+          wrapperClass="MagnifyingGlass-wrapper"
+          glassColor="#c0efff"
+          color="#f82b4b"
+        />
       ) : (
         <FilmPosterContainer>
           <img

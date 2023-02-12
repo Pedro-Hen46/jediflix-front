@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { MagnifyingGlass } from "react-loader-spinner";
 import ModalCancelOrder from "../../utils/ModalCancelOrder";
 import YoutubeTrailerModal from "../../utils/YoutubeTrailerModal";
 
@@ -14,7 +15,16 @@ export default function OptionsLeft({ infoFilm }) {
   return (
     <>
       {infoFilm.film === undefined ? (
-        <h1></h1>
+        <MagnifyingGlass
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="MagnifyingGlass-loading"
+          wrapperStyle={{}}
+          wrapperClass="MagnifyingGlass-wrapper"
+          glassColor="#c0efff"
+          color="#f82b4b"
+        />
       ) : (
         <OptionsLeftContainer>
           {control ? <ModalCancelOrder setControl={setControl} /> : <></>}
@@ -81,13 +91,20 @@ const OptionsLeftContainer = styled.div`
   align-items: center;
 
   img {
-    width: 80%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    height: auto;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+    width: 13rem;
+    height: 20rem;
+
+    border-radius: 6px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.3s linear;
+
+    &:hover {
+      box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.4);
+      cursor: pointer;
+    }
   }
 
   h3 {

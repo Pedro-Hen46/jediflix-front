@@ -7,7 +7,6 @@ import {
   BsFillPersonFill,
   BsFillCartFill,
 } from "react-icons/bs";
-import MenuHamburguer from "../../utils/MenuHamburguer";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {

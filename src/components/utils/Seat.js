@@ -13,6 +13,7 @@ export default function Seat({ seat, selectedSeats, setSelectedSeats }) {
       buttonWasSeleted={buttonWasSeleted}
       onClick={() => {
         setButtonWasSelected(true);
+        //SELECIONA A POLTRONA
         const seatWasFound = selectedSeats.find((item) => item == name);
 
         if (seatWasFound) {
@@ -35,7 +36,8 @@ export default function Seat({ seat, selectedSeats, setSelectedSeats }) {
 const CircleSeat = styled.div`
   width: 50px !important;
   height: 50px !important;
-  margin-right: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 
   border-radius: 50%;
   background-color: ${(props) =>
@@ -48,7 +50,7 @@ const CircleSeat = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-    color: ${(props) =>
+  color: ${(props) =>
     props.isAvailable
       ? props.buttonWasSeleted
         ? "#f3f3f3"

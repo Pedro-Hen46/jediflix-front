@@ -7,6 +7,7 @@ import GlobalStyle from "../lib/GlobalStyle";
 import Login from "./screens/login/Login";
 import Register from "./screens/register/Register";
 import MyOrders from "./screens/myorders/MyOrders";
+import Checkout from "./screens/checkout/Checkout";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/myorders" element={<MyOrders />} />
+        <Route path="/film/:filmId/checkout" element={<Checkout />} />
       </Routes>
     </BrowserRouter>
   );

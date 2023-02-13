@@ -48,8 +48,8 @@ export default function FilmOverview({ infoFilm }) {
               </button>
 
               <span className="totalPrice">
-                <strong>
-                  TOTAL PEDIDO: R${" "}
+                TOTAL:                 <strong>
+                  R$
                   {infoFilm.film.priceTicket * selectedSeats.length}
                 </strong>
               </span>
@@ -130,8 +130,11 @@ const HeaderInfo = styled.div`
   .next-page {
     display: ${(props) => (props.timeControl ? "inline" : "none")};
 
-    background-color: ${(props) => (props.selectedSeats.length === 0 ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,1)")};
-    
+    background-color: ${(props) =>
+      props.selectedSeats.length === 0
+        ? "rgba(255,255,255,0.3)"
+        : "rgba(255,255,255,1)"};
+
     &:hover {
       background-color: #fff;
 
@@ -141,6 +144,9 @@ const HeaderInfo = styled.div`
   }
 
   .totalPrice {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 1.2px;
     display: ${(props) =>
       props.timeControl
         ? props.selectedSeats.length === 0

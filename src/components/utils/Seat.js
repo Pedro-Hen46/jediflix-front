@@ -43,7 +43,7 @@ const CircleSeat = styled.div`
   background-color: ${(props) =>
     props.isAvailable
       ? props.buttonWasSeleted
-        ? "green"
+        ? "#70E446"
         : "#f3f3f3"
       : "#f82b4b"};
 

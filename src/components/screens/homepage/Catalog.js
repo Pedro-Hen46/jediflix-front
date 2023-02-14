@@ -66,7 +66,7 @@ export default function Catalog() {
           <></>
         ) : (
           <>
-            <Apresentation>
+            {/* <Apresentation>
               <img
                 src={yodaApresentation}
                 alt="Yoda segurando um sabre de luz"
@@ -77,7 +77,7 @@ export default function Catalog() {
                 ENQUANDO ISSO VOCÊ PODE SELECIONAR UM FILME PARA GARANTIR A SUA
                 POLTRONA."
               </span>
-            </Apresentation>
+            </Apresentation> */}
           </>
         )}
         <CategoriesAvaiable>
@@ -131,7 +131,6 @@ const CategoriesAvaiable = styled.div`
   justify-content: space-around;
   margin-top: 10px;
   padding: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
 
   span {
     font-weight: 600 !important;

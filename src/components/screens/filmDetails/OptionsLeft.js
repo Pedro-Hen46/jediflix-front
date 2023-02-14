@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import styled from "styled-components";
+import { BiHeart } from "react-icons/bi";
 
 import { MagnifyingGlass } from "react-loader-spinner";
 import ModalCancelOrder from "../../utils/ModalCancelOrder";
@@ -11,6 +12,7 @@ export default function OptionsLeft({ infoFilm }) {
 
   const [control, setControl] = useState(false);
   const [trailerPlayer, setTrailerPlayer] = useState(false);
+  const [favorit, setFavorit] = useState([]);
 
   return (
     <>
@@ -33,6 +35,12 @@ export default function OptionsLeft({ infoFilm }) {
             title={infoFilm.film.name}
             alt={infoFilm.film.name}
           />
+
+          <div className="favorit" onClick={() => localStorage.setItem("@favorits", infoFilm.film.id)}>
+            <BiHeart size={30} />
+            <h5>Adicionar nos Favoritos</h5>
+          </div>
+
           <h3>
             Valor por Ingresso:{" "}
             <strong> R${infoFilm.film.priceTicket},00</strong>
@@ -80,7 +88,7 @@ const ButtonTrailer = styled.div`
 const OptionsLeftContainer = styled.div`
   width: 20vw;
   height: 100vh;
-  padding: 1rem;
+  padding: 0.4rem;
 
   position: fixed;
   top: 0;
@@ -89,6 +97,23 @@ const OptionsLeftContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
+  .favorit{
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s linear;
+
+    &:hover{
+      color: #f82b4b;
+      cursor: pointer;
+    }
+  }
 
   img {
     margin-top: 3rem;

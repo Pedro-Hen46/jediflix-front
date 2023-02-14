@@ -24,9 +24,9 @@ export default function Login() {
     });
 
     promise.then((response) => {
-      console.log(response);
       if (response.status === 200) {
         navigate("/");
+        localStorage.setItem("@token", response.data.token);
       }
       
       setLoading(false);

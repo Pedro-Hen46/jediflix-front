@@ -159,6 +159,8 @@ const CatalogContainer = styled.div`
   justify-content: center;
   align-items: center;
 
+  transition: 0.3s linear;
+
   span {
     color: #fff;
     text-align: center;
